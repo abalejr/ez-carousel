@@ -1,0 +1,35 @@
+.section-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.carousel-wrap {
+  width: 100%;
+}
+.carousel-track {
+  position: relative;
+  transition: all 0.5s ease 0s;
+  display: flex;
+}
+.carousel-item {
+  opacity: 0;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+.carousel-item.current {
+  opacity: 1;
+}
+.carousel-pager-wrap {
+  text-align: center;
+}
+.carousel-pager-wrap .carousel-pager {
+  background-color: #9998;
+  display: inline-block;
+  width: 60px;
+  height: 3px;
+  margin: 0 3px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.carousel-pager-wrap .carousel-pager.current {
+  background-color: #de871d;
+}
