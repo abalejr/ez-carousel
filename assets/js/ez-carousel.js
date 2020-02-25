@@ -17,15 +17,22 @@ $(document).ready(() => {
   let ciCount = 0;
   carouselItems.each(function() {
     ciCount += 1;
-    $(this).attr('id', 'ci' + ciCount);
-    if (ciCount === 1) {
-      $('.carousel-pager-wrap').append(
-        '<div id="cp' + ciCount + '" class="carousel-pager current"></div>'
-      );
-    } else {
-      $('.carousel-pager-wrap').append(
-        '<div id="cp' + ciCount + '" class="carousel-pager"></div>'
-      );
+    let $this = $(this);
+    const pagerWrap = $('.carousel-pager-wrap');
+    $this.attr('id', 'ci' + ciCount);
+    if ( ciCount === 1 ) {
+      $this.addClass('current');
+    }
+    if ( pagerWrap.length !== 0 ){
+      if ( $this.hasClass('current') ) {
+        pagerWrap.append(
+          '<div id="cp' + ciCount + '" class="carousel-pager current"></div>'
+        );
+      } else {
+        pagerWrap.append(
+          '<div id="cp' + ciCount + '" class="carousel-pager"></div>'
+        );
+      }
     }
   });
 
