@@ -10,7 +10,7 @@ $(document).ready(() => {
   const carouselWrap = $('.carousel-wrap');
   let itemSize = carouselWrap.width();
   carouselItems.css({ width: itemSize });
-  carouselTrack.css({ width: itemSize * carouselItemCount + 1 });
+  carouselTrack.css({ width: itemSize * carouselItemCount});
   carouselItems.each(function() {
     ciCount += 1;
     $(this).attr('id', 'ci' + ciCount);
@@ -33,7 +33,6 @@ $(document).ready(() => {
     }
     currentItem.toggleClass('current');
     nextItem.toggleClass('current');
-    currentPager = $('#cp' + currentItem.attr('id').slice(2));
     currentPager.toggleClass('current');
 
     currentItem = nextItem;
@@ -41,9 +40,8 @@ $(document).ready(() => {
     currentPager.toggleClass('current');
   };
   const slideCurrent = () => {
-    let itemWidth = currentItem.width();
     let currentItemNum = currentItem.attr('id').slice(2);
-    let trackRight = (currentItemNum - 1) * itemWidth;
+    let trackRight = (currentItemNum - 1) * itemSize;
     carouselTrack.css({ right: trackRight });
   };
   const resizeCarousel = () => {
