@@ -55,7 +55,7 @@ $(document).ready(() => {
     slideCurrent();
   };
   $(window).resize(resizeCarousel);
-  const autoCarousel = window.setInterval(toggleSlide, 4000);
+  let autoCarousel = window.setInterval(toggleSlide, 4000);
   carouselPagers.on('click', function() {
     window.clearInterval(autoCarousel);
     let clickedPager = $(this);
