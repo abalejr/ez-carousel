@@ -1,6 +1,9 @@
-body {
-  max-width: 100%;
+body,
+section {
+  margin: 0;
+  overflow-x: hidden;
 }
+
 .section-inner {
   max-width: 1000px;
   margin: 0 auto;
@@ -10,6 +13,7 @@ body {
 }
 .carousel-track {
   position: relative;
+  right: 0;
   transition: all 0.5s ease 0s;
   display: flex;
 }
