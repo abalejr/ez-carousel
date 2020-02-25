@@ -1,16 +1,20 @@
 $(document).ready(() => {
-  let ciCount = 0;
-  let currentItem = $('.carousel-item.current');
-  const carouselItems = $('.carousel-item');
-  const carouselItemCount = carouselItems.length;
+  // Check for carousel items, terminate if none found
+  const carouselItems = $('.carousel-item'),
+        carouselItemCount = carouselItems.length;
   if(carouselItemCount == 0) {
     return;
   }
-  const carouselTrack = $('.carousel-track');
-  const carouselWrap = $('.carousel-wrap');
+
+  // Set up carousel track
+  const carouselTrack = $('.carousel-track'),
+        carouselWrap = $('.carousel-wrap');
   let itemSize = carouselWrap.width();
   carouselItems.css({ width: itemSize });
   carouselTrack.css({ width: itemSize * carouselItemCount});
+
+  // Create carousel pagers
+  let ciCount = 0;
   carouselItems.each(function() {
     ciCount += 1;
     $(this).attr('id', 'ci' + ciCount);
@@ -24,8 +28,10 @@ $(document).ready(() => {
       );
     }
   });
-  let currentPager = $('.carousel-pager.current');
-  const carouselPagers = $('.carousel-pager');
+
+  // Helper Functions
+  let currentItem = $('.carousel-item.current'),
+      currentPager = $('.carousel-pager.current');
   const toggleCurrent = () => {
     let nextItem = currentItem.next();
     if (nextItem.length === 0) {
@@ -49,13 +55,16 @@ $(document).ready(() => {
     carouselItems.css({ width: itemSize });
     carouselTrack.css({ width: itemSize * carouselItemCount + 1 });
   };
-
   const toggleSlide = () => {
     toggleCurrent();
     slideCurrent();
   };
-  $(window).resize(resizeCarousel);
+
+  // Start autoscroll
   let autoCarousel = window.setInterval(toggleSlide, 4000);
+
+  // Handle pager click
+  const carouselPagers = $('.carousel-pager');
   carouselPagers.on('click', function() {
     window.clearInterval(autoCarousel);
     let clickedPager = $(this);
@@ -68,4 +77,7 @@ $(document).ready(() => {
     slideCurrent();
     autoCarousel = window.setInterval(toggleSlide, 4000);
   });
+
+  // Resize carousel items when screen is resized
+  $(window).resize(resizeCarousel);
 });
